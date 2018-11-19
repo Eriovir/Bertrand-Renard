@@ -1,0 +1,7 @@
+D:\Users\SYDN3\Documents\Code\Bertrand Renard\Bertrand Renard\bin\Debug\Bertrand Renard.exe.config
+D:\Users\SYDN3\Documents\Code\Bertrand Renard\Bertrand Renard\bin\Debug\Bertrand Renard.exe
+D:\Users\SYDN3\Documents\Code\Bertrand Renard\Bertrand Renard\bin\Debug\Bertrand Renard.pdb
+D:\Users\SYDN3\Documents\Code\Bertrand Renard\Bertrand Renard\obj\Debug\Bertrand Renard.csprojAssemblyReference.cache
+D:\Users\SYDN3\Documents\Code\Bertrand Renard\Bertrand Renard\obj\Debug\Bertrand Renard.csproj.CoreCompileInputs.cache
+D:\Users\SYDN3\Documents\Code\Bertrand Renard\Bertrand Renard\obj\Debug\Bertrand Renard.exe
+D:\Users\SYDN3\Documents\Code\Bertrand Renard\Bertrand Renard\obj\Debug\Bertrand Renard.pdb
