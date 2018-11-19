@@ -28,7 +28,8 @@ namespace Bertrand_Renard
             return without_i;
         }
 
-        private static void Find_Combi(List<double> digits, double nb, double current, string result, ref List<string> output_list) // Fill output_list with all solutions
+		// Fill output_list with all solutions
+        private static void Find_Combi(List<double> digits, double nb, double current, string result, ref List<string> output_list)
         {
             if (digits.Count != 0)
             {
