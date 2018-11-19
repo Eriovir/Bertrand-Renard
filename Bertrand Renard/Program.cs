@@ -12,7 +12,9 @@ namespace Bertrand_Renard
         static double b;
         static void Main(string[] args)
         {
+            // Do some rapid calculations to determine the computer capacities
             Predict_Time();
+
             Stopwatch sw = new Stopwatch();
             bool exit = false;
             bool keep_list = false;
@@ -22,7 +24,7 @@ namespace Bertrand_Renard
                 string solution;
 
                 to_find = 0;
-                Get_to_find(); // Get objective
+                Get_to_find(); // Get number to find
 
                 if (!keep_list)
                 {
@@ -32,17 +34,17 @@ namespace Bertrand_Renard
 
                 double time = a * Math.Pow(b, digits.Count) / 1000;
                 if (time > 1)
-                    Console.WriteLine("Temps nécessaire : moins de {0} secondes", Math.Truncate(time).ToString());
+                    Console.WriteLine("Needed time : less than {0} seconds", Math.Truncate(time).ToString());
                 else
-                    Console.WriteLine("Temps nécessaire : environ {0} millisecondes", (time * 1000).ToString());
+                    Console.WriteLine("Needed time : approximately {0} milliseconds", (time * 1000).ToString());
                 sw.Restart();
 
                 solution = Calculations.Solution(to_find, 0, digits);
                 Console.WriteLine();
-                Console.WriteLine(solution + " -> temps : " + sw.ElapsedMilliseconds.ToString() + "ms");
+                Console.WriteLine(solution + " -> time : " + sw.ElapsedMilliseconds.ToString() + "ms");
                 Console.WriteLine();
-
-                Console.WriteLine("Pour fermer appyer sur q, pour recommencer appuyer sur une autre touche, appuyer sur k pour conserver la liste");
+                
+                Console.WriteLine("To quit press q, press k to keep on with the same list, any other key to restart.");
                 string exit_string = Console.ReadKey().Key.ToString();
                 if (exit_string != "Q")
                 {
@@ -65,7 +67,7 @@ namespace Bertrand_Renard
             bool has_chosen = false;
             while (!has_chosen)
             {
-                Console.WriteLine("Quel chiffre Bertrand-Renardiser ?");
+                Console.WriteLine("What number do you want to find ?");
                 try
                 {
                     to_find = double.Parse(Console.ReadLine());
@@ -73,7 +75,7 @@ namespace Bertrand_Renard
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Mets un bon chiffre ??");
+                    Console.WriteLine("Please enter a correct number.");
                 }
             }
         }
@@ -83,8 +85,8 @@ namespace Bertrand_Renard
             string digit = "";
             while (true)
             {
-                Console.WriteLine("Quel chiffre ajouter à la liste pour Bertrand-Renardiser (supporte le format x, y, z ...) ? mets y si c'est fini");
-                Console.Write("Chiffres actuels : ");
+                Console.WriteLine("What number do you want to add to the list ? Enter Y if there are no more.");
+                Console.Write("Current numbers : ");
                 int cou = digits.Count;
                 if (cou > 0)
                 {
@@ -106,13 +108,15 @@ namespace Bertrand_Renard
                         }
                         else
                         {
-                            Console.WriteLine("Il n'y a aucun chiffre dans la liste.");
+                            Console.WriteLine("The list is empty.");
                         }
                     }
                     else if (digit.Contains(","))
                     {
                         int j = 0;
-                        while (j < digit.Length) // Add format being like 3, 7, 9, 2...
+
+                        // Detect format being like 3, 7, 9, 2...
+                        while (j < digit.Length)
                         {
                             string current_digit = "";
                             while (j < digit.Length && digit[j] >= 48 && digit[j] <= 57)
@@ -134,11 +138,13 @@ namespace Bertrand_Renard
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Mets un bon chiffre ??");
+                    Console.WriteLine("Please enter a correct number.");
                 }
             }
         }
 
+        // This function is the result of a calculation
+        // It was found using this website https://sciencing.com/exponential-equation-two-points-8117999.html
         static void Predict_Time()
         {
             Stopwatch st = new Stopwatch();
@@ -157,8 +163,10 @@ namespace Bertrand_Renard
             Calculations.Solution(1, 0, list_time_float);
             time2 = st.ElapsedMilliseconds;
 
+            // Coefficients of a function of form ab^x
             b = time2 / time1;
-            a = time2 / Math.Pow(b, 5) * 0.3;
+            a = time2 / Math.Pow(b, list_time_float.Count) * 0.25;  // 0.25 is the correct number
+                                                                    // However I do not know why
         }
     }
 }
